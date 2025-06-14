@@ -5,6 +5,10 @@ const {extractTextFromPDF} = require('../utils/parseText');
 
 router.post('/',upload.single('file'),async (req,res) => {
     try{
+        if (!req.file) {
+            return res.status(400).json({error: 'No file uploaded'});
+        }
+
         const buffer = req.file.buffer;
         const filename = req.file.originalname;
 
