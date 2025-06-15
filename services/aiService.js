@@ -26,4 +26,16 @@ const generateContent = async (text)=>{
     }
 }
 
-module.exports = generateContent;
+const generateMCQFromText = async (text) => {
+    try {
+        const prompt = `Generate 5 multiple choice questions with answers based on the following academic content:\n\n${text}`;
+        const result = await model.generateContent(prompt);
+        const response = await result.response;
+        return response.text();
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
+module.exports = { generateContent, generateMCQFromText };

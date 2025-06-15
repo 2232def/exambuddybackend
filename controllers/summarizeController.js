@@ -1,5 +1,5 @@
 const {extractTextFromPDF} = require('../utils/parseText');
-const generateContent = require('../services/aiService');
+const {generateContent} = require('../services/aiService');
 
 const summarizeHandler = async (req, res) => {
     try {
